@@ -29,7 +29,22 @@ def convertir_segundos(segundos_totales: int) -> tuple[int, int, int, int]:
         - 1 minuto = 60 segundos
     """
     # TODO: Implementar la función
-    return (0, 0, 0, 0)
+    if segundos_totales < 0:
+        return (0, 0, 0, 0)
+    dias = 0
+    horas = 0
+    minutos = 0
+    segundos = segundos_totales
+    while segundos >= 60:
+        minutos += 1
+        segundos -= 60
+        while minutos >= 60:
+            horas += 1
+            minutos -= 60
+            while horas >= 24:
+                dias += 1
+                horas -= 24
+    return (dias, horas, minutos, segundos)
 
 
 def solicitar_segundos() -> int:
